@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">MySIPApplication</string>
+    <string name="shared_preference_key">SaleskenAppComplexKey</string>
+
+</resources>
