@@ -40,6 +40,8 @@ public class MainActivity extends AppCompatActivity {
     EditText edit_domain;
     @BindView(R.id.password)
     EditText edit_password;
+    @BindView(R.id.proxy_url)
+    EditText edit_proxy_url;
     @BindView(R.id.register)
     Button register;
     @BindView(R.id.status)
@@ -102,8 +104,9 @@ public class MainActivity extends AppCompatActivity {
             String username = edit_username.getText().toString();
             String domain = edit_domain.getText().toString();
             String password = edit_password.getText().toString();
+            String proxy_url = edit_proxy_url.getText().toString();
 
-            if (username.length() == 0 || domain.length() == 0 || password.length() == 0) {
+            if (username.length() == 0 || domain.length() == 0 || password.length() == 0 || proxy_url.length() == 0) {
                 Toast.makeText(this, "Update SIp Settings", Toast.LENGTH_LONG).show();
                 return;
             }
@@ -111,6 +114,7 @@ public class MainActivity extends AppCompatActivity {
             try {
                 SipProfile.Builder builder = new SipProfile.Builder(username, domain);
                 builder.setPassword(password);
+                builder.setOutboundProxy(proxy_url);
                 sipprofile = builder.build();
 
                 Intent i = new Intent();
